@@ -1,0 +1,42 @@
+baseURL = 'https://shivakumaar.dev/'
+languageCode = 'en-us'
+title = 'shivakumaar.dev'
+theme = 'papermod'
+
+[params.profileMode]
+enabled = true
+title = "Shivakumaar"
+subtitle = "Rubyist | Vimmer | Gopher"
+imageUrl = "https://avatars.githubusercontent.com/u/5259338?v=4"
+imageTitle = "Smile!"
+imageWidth = 120
+imageHeight = 120
+
+[[params.profileMode.buttons]]
+name = "About"
+url = "/about"
+
+[[params.profileMode.buttons]]
+name = "Projects"
+url = "/projects"
+
+[[params.profileMode.buttons]]
+name = "Blog"
+url = "/blogs"
+
+[[params.socialIcons]]
+name = "Github"
+url = "https://github.com/shivakumaarmgs"
+
+[[params.socialIcons]]
+name = "LinkedIn"
+url = "https://in.linkedin.com/in/shivakumaarmgs"
+
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = true
+    lineNumbersInTable = true
+    style = 'catppuccin-mocha'
+    tabWidth = 4
