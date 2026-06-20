@@ -4,3 +4,8 @@ public
 .agent
 .claude
 .codex
+
+package-lock.json
+package.json
+node_modules/
+
