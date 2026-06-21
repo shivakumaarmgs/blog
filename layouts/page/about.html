@@ -19,9 +19,17 @@
   .footer span {
     display: inline !important;
   }
+  /* Style header logo and theme toggle to match daisyUI theme colors */
+  .logo a {
+    color: var(--p) !important;
+    font-weight: 800 !important;
+  }
+  .theme-toggle {
+    color: var(--p) !important;
+  }
 </style>
 
-<div id="about-container" data-theme="autumn" class="bg-transparent text-base-content max-w-[760px] mx-auto px-2 py-4 font-sans transition-all duration-300">
+<div id="about-container" class="bg-transparent text-base-content max-w-[760px] mx-auto px-2 py-4 transition-all duration-300">
   
   <!-- Hero Header -->
   <header class="text-center mb-8">
@@ -202,8 +210,6 @@
 
 <script>
   function syncDaisyTheme() {
-    const container = document.getElementById('about-container');
-    if (!container) return;
     const htmlEl = document.documentElement;
     const isDark = htmlEl.dataset.theme === 'dark' || 
                    htmlEl.getAttribute('data-theme') === 'dark' ||
@@ -211,9 +217,9 @@
                    (!localStorage.getItem("pref-theme") && window.matchMedia('(prefers-color-scheme: dark)').matches);
     
     if (isDark) {
-      container.setAttribute('data-theme', 'night');
+      document.body.setAttribute('data-theme', 'sunset');
     } else {
-      container.setAttribute('data-theme', 'autumn');
+      document.body.setAttribute('data-theme', 'autumn');
     }
   }
 
