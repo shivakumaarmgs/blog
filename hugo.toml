@@ -40,3 +40,14 @@ url = "https://in.linkedin.com/in/shivakumaarmgs"
     lineNumbersInTable = true
     style = 'catppuccin-mocha'
     tabWidth = 4
+
+[params]
+  description = "Shivakumaar MGS — Senior Engineer specialising in fraud detection, identity systems, and data pipelines at banking scale. 12+ years building with Ruby, Java, and Go."
+
+[params.homeInfoParams]
+  Title = "Hi, I'm Shivakumaar 👋"
+  Content = """
+Senior engineer with 12+ years building data-intensive systems — fraud detection, identity pipelines, and compliance infrastructure at banking scale.
+
+I write Ruby, Java, and Go. Currently leading the Anti-Financial Crime team at Solaris Group, where we run real-time fraud response and due diligence systems across millions of customers.
+"""

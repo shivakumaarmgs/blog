@@ -1,33 +1,5 @@
 {{- define "main" }}
-<!-- Tailwind CSS and daisyUI CDNs -->
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
 
-<style>
-  /* Reset daisyUI's global grid override on PaperMod's footer */
-  .footer {
-    display: block !important;
-    width: auto !important;
-    grid-auto-flow: unset !important;
-    place-items: unset !important;
-    column-gap: unset !important;
-    row-gap: unset !important;
-    font-size: 12px !important;
-    line-height: 24px !important;
-    text-align: center !important;
-  }
-  .footer span {
-    display: inline !important;
-  }
-  /* Style header logo and theme toggle to match daisyUI theme colors */
-  .logo a {
-    color: var(--p) !important;
-    font-weight: 800 !important;
-  }
-  .theme-toggle {
-    color: var(--p) !important;
-  }
-</style>
 
 <div id="about-container" class="bg-transparent text-base-content max-w-[760px] mx-auto px-2 py-4 transition-all duration-300">
   
@@ -208,28 +180,4 @@
   {{- end }}
 </div>
 
-<script>
-  function syncDaisyTheme() {
-    const htmlEl = document.documentElement;
-    const isDark = htmlEl.dataset.theme === 'dark' || 
-                   htmlEl.getAttribute('data-theme') === 'dark' ||
-                   localStorage.getItem("pref-theme") === "dark" ||
-                   (!localStorage.getItem("pref-theme") && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    
-    if (isDark) {
-      document.body.setAttribute('data-theme', 'sunset');
-    } else {
-      document.body.setAttribute('data-theme', 'autumn');
-    }
-  }
-
-  // Run on load
-  syncDaisyTheme();
-
-  // Observe dark/light mode toggles on the html element
-  const observer = new MutationObserver(() => {
-    syncDaisyTheme();
-  });
-  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-</script>
 {{- end }}

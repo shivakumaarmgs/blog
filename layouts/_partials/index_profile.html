@@ -1,0 +1,71 @@
+<div class="profile bg-transparent text-base-content max-w-[760px] mx-auto px-4 py-8 flex flex-col items-center justify-center text-center transition-all duration-300">
+    {{- with site.Params.profileMode }}
+    <div class="profile_inner flex flex-col items-center gap-6">
+        {{- if .imageUrl -}}
+        {{- $img := "" }}
+        {{- if not (urls.Parse .imageUrl).IsAbs }}
+            {{- $img = resources.Get .imageUrl }}
+        {{- end }}
+        
+        <div class="avatar mb-2">
+            <div class="w-32 h-32 rounded-full ring-4 ring-primary ring-offset-base-100 ring-offset-4 shadow-xl transition-all duration-300">
+                {{- if $img }}
+                    {{- $processableFormats := (slice "jpg" "jpeg" "png" "tif" "bmp" "gif") -}}
+                    {{- if hugo.IsExtended -}}
+                        {{- $processableFormats = $processableFormats | append "webp" -}}
+                    {{- end -}}
+                    {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) }}
+                    {{- if and (in $processableFormats $img.MediaType.SubType) (eq $prod true)}}
+                        {{- if (not (and (not .imageHeight) (not .imageWidth))) }}
+                            {{- $img = $img.Resize (printf "%dx%d" .imageWidth .imageHeight) }}
+                        {{- else if .imageHeight }}
+                            {{- $img = $img.Resize (printf "x%d" .imageHeight) }}
+                        {{ else if .imageWidth }}
+                            {{- $img = $img.Resize (printf "%dx" .imageWidth) }}
+                        {{ else }}
+                            {{- $img = $img.Resize "150x150" }}
+                        {{- end }}
+                    {{- end }}
+                    <img draggable="false" class="rounded-full" src="{{ $img.Permalink }}" alt="{{ .imageTitle | default "profile image" }}" title="{{ .imageTitle }}"
+                        height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}" />
+                {{- else }}
+                    <img draggable="false" class="rounded-full" src="{{ .imageUrl | absURL }}" alt="{{ .imageTitle | default "profile image" }}" title="{{ .imageTitle }}"
+                        height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}" />
+                {{- end }}
+            </div>
+        </div>
+        {{- end }}
+        
+        <div class="space-y-3">
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-primary">
+                {{ .title | default site.Title | markdownify }}
+            </h1>
+            <p class="text-lg md:text-xl font-medium text-base-content/85 max-w-xl mx-auto leading-relaxed">
+                {{ .subtitle | markdownify }}
+            </p>
+        </div>
+
+        <div class="flex gap-4 justify-center">
+            {{- partial "social_icons.html" -}}
+        </div>
+
+        {{- with .buttons }}
+        <div class="flex flex-wrap justify-center gap-3 mt-2 max-w-md">
+            {{- range . }}
+            <a class="btn btn-soft btn-primary btn-sm md:btn-md px-6 bg-primary/10 text-primary border-none hover:bg-primary/20 hover:scale-105 transition-all duration-200 shadow-sm" href="{{ trim .url " " }}" rel="noopener" title="{{ .name }}">
+                {{ .name }}
+                {{- if (findRE "://" .url) }}
+                <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="14" width="14" class="inline-block ml-1">
+                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                    <path d="M15 3h6v6"></path>
+                    <path d="M10 14L21 3"></path>
+                </svg>
+                {{- end }}
+            </a>
+            {{- end }}
+        </div>
+        {{- end }}
+    </div>
+    {{- end}}
+</div>

@@ -1,0 +1,72 @@
+<!-- Load Tailwind CSS and daisyUI CDNs globally -->
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
+
+<style>
+  /* 
+    Global Theme Skinning: Map PaperMod color tokens to daisyUI variable tokens
+    scoped to body[data-theme] to prevent conflict with html[data-theme] (used by PaperMod).
+  */
+
+  body[data-theme="autumn"] {
+    --theme: oklch(var(--b1)) !important;
+    --entry: oklch(var(--b2)) !important;
+    --primary: oklch(var(--p)) !important;
+    --secondary: oklch(var(--bc) / 0.8) !important;
+    --tertiary: oklch(var(--bc) / 0.5) !important;
+    --content: oklch(var(--bc)) !important;
+    --code-block-bg: oklch(var(--b2)) !important;
+    --code-bg: oklch(var(--b3) / 0.4) !important;
+    --border: oklch(var(--bc) / 0.1) !important;
+    color-scheme: light;
+  }
+
+  body[data-theme="sunset"] {
+    --theme: oklch(var(--b1)) !important;
+    --entry: oklch(var(--b2)) !important;
+    --primary: oklch(var(--p)) !important;
+    --secondary: oklch(var(--bc) / 0.8) !important;
+    --tertiary: oklch(var(--bc) / 0.5) !important;
+    --content: oklch(var(--bc)) !important;
+    --code-block-bg: oklch(var(--b2)) !important;
+    --code-bg: oklch(var(--b3) / 0.4) !important;
+    --border: oklch(var(--bc) / 0.1) !important;
+    color-scheme: dark;
+  }
+
+  /* Smooth transitions for theme skinning */
+  html, body, .list, .toc, .header, .footer, .logo a, .theme-toggle {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, stroke 0.3s ease !important;
+  }
+
+  /* Force site-wide backgrounds and text colors to match active theme */
+  body {
+    background: var(--theme) !important;
+    color: var(--content) !important;
+  }
+
+  /* Dynamically style PaperMod header brand and dark mode switches */
+  .logo a {
+    color: var(--primary) !important;
+    font-weight: 800 !important;
+  }
+  .theme-toggle {
+    color: var(--primary) !important;
+  }
+
+  /* Clean up DaisyUI grid conflicts on PaperMod's footer */
+  .footer {
+    display: block !important;
+    width: auto !important;
+    grid-auto-flow: unset !important;
+    place-items: unset !important;
+    column-gap: unset !important;
+    row-gap: unset !important;
+    font-size: 12px !important;
+    line-height: 24px !important;
+    text-align: center !important;
+  }
+  .footer span {
+    display: inline !important;
+  }
+</style>

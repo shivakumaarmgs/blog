@@ -1,0 +1,24 @@
+<script>
+  function syncGlobalDaisyTheme() {
+    const htmlEl = document.documentElement;
+    // Check PaperMod's active dark theme states
+    const isDark = htmlEl.dataset.theme === 'dark' || 
+                   htmlEl.getAttribute('data-theme') === 'dark' ||
+                   localStorage.getItem("pref-theme") === "dark" ||
+                   (!localStorage.getItem("pref-theme") && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    
+    const themeName = isDark ? 'sunset' : 'autumn';
+    
+    // Apply data-theme to document.body to scope DaisyUI theme variables
+    document.body.setAttribute('data-theme', themeName);
+  }
+
+  // Run immediately on page load
+  syncGlobalDaisyTheme();
+
+  // Watch for PaperMod's dark/light theme toggle button changes on the <html> tag
+  const globalThemeObserver = new MutationObserver(() => {
+    syncGlobalDaisyTheme();
+  });
+  globalThemeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+</script>
