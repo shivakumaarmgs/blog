@@ -6,7 +6,7 @@ theme = 'papermod'
 [params.profileMode]
 enabled = true
 title = "Shivakumaar"
-subtitle = "Rubyist | Vimmer | Gopher"
+subtitle = "Building fraud-proof systems at banking scale · Ruby · Java · Go"
 imageUrl = "https://avatars.githubusercontent.com/u/5259338?v=4"
 imageTitle = "Smile!"
 imageWidth = 120
@@ -33,6 +33,9 @@ name = "LinkedIn"
 url = "https://in.linkedin.com/in/shivakumaarmgs"
 
 [markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
   [markup.highlight]
     codeFences = true
     guessSyntax = true
@@ -49,5 +52,5 @@ url = "https://in.linkedin.com/in/shivakumaarmgs"
   Content = """
 Senior engineer with 12+ years building data-intensive systems — fraud detection, identity pipelines, and compliance infrastructure at banking scale.
 
-I write Ruby, Java, and Go. Currently leading the Anti-Financial Crime team at Solaris Group, where we run real-time fraud response and due diligence systems across millions of customers.
+I write Ruby, Java, and Go. Currently leading the Anti-Financial Crime Risk & Devices team at Solaris Group, where we run real-time fraud response and due diligence systems across millions of customers.
 """

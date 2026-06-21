@@ -94,7 +94,7 @@ I build systems that keep money safe — and lead the teams that make them run a
 
 ## Background
 
-I'm a senior engineer and team lead based in Chennai with **12+ years** of experience across the full arc of product engineering — from shipping client apps to owning platforms to running cross-functional teams in regulated fintech. Currently at Solaris Group, where I lead the Identity and Anti-Financial Crime team.
+I'm a senior engineer and team lead based in Chennai with **12+ years** of experience across the full arc of product engineering — from shipping client apps to owning platforms to running cross-functional teams in regulated fintech. Currently at Solaris Group, where I lead the Identity and Anti-Financial Crime Risk & Devices team.
 
 I write Ruby, Java, and Go depending on what the problem needs. My work sits at the intersection of real-time systems, compliance pipelines, and fraud prevention — the kind of problems where getting it wrong has real consequences.
 
